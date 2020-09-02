@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>Weather App</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="src/styles.css" />
+    <script
+      src="https://kit.fontawesome.com/f5a245887a.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="container">
+      <form class="search">
+        <input
+          class="search-bar"
+          type="text"
+          placeholder="Enter a city here"
+        /><i class="fas fa-search"></i>
+      </form>
+      <button id="location"><i class="fas fa-map-marker-alt"></i></button>
+      <h1>BERLIN</h1>
+      <div class="row">
+        <div class="col-8">
+          <p class="today">Today |</p>
+          <p class="current-date">8 August 2020</p>
+          <br />
+          <p id="current-temp">26°C</p>
+          <p><i class="fas fa-cloud"></i> Partly Cloudy</p>
+        </div>
+        <div class="col-4">
+          <h6>Wind</h6>
+          <p>5km/h</p>
+          <h6>Humidity</h6>
+          <p>32%</p>
+        </div>
+      </div>
+      <hr />
+      <div class="row">
+        <div class="col forecast">
+          <h6>SUN</h6>
+          <i class="fas fa-cloud-sun"></i>
+          <p>21°C</p>
+        </div>
+        <div class="col forecast">
+          <h6>MON</h6>
+          <i class="fas fa-sun"></i>
+          <p>24°C</p>
+        </div>
+        <div class="col forecast">
+          <h6>TUE</h6>
+          <i class="fas fa-cloud-showers-heavy"></i>
+          <p>16°C</p>
+        </div>
+        <div class="col forecast">
+          <h6>WED</h6>
+          <i class="fas fa-cloud-showers-heavy"></i>
+          <p>13°C</p>
+        </div>
+        <div class="col forecast">
+          <h6>THU</h6>
+          <i class="fas fa-sun"></i>
+          <p>21°C</p>
+        </div>
+      </div>
+    </div>
+    <script src="src/index.js"></script>
+  </body>
+</html>
