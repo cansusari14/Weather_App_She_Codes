@@ -29,7 +29,13 @@
   border-radius: 10px;
   display: block;
   margin: 40px auto;
+  margin-bottom: 10px;
   padding: 30px;
   max-width: 450px;
   border: 1px solid black;
+}
+.link {
+  margin: 0 auto;
+  max-width: 450px;
+  display: block;
 }
