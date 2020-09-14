@@ -11,7 +11,7 @@ if (minute < 10) {
 }
 
 let dateDisplay = document.querySelector(".current-date");
-dateDisplay.innerHTML = `${day}, ${hour}:${minute}`;
+dateDisplay.innerHTML = `Today | ${day}, ${hour}:${minute}`;
 let apiKey = "995d2282655743a8f4d6521ab4e2c0d9";
 let currentCity = document.querySelector("h1");
 function getWeather(city) {
@@ -27,7 +27,7 @@ function showPosition(position) {
 }
 
 function showTemperature(response) {
-  let tempDisplay = document.querySelector("#current-temp");
+  let tempDisplay = document.querySelector("#temperature");
   tempDisplay.innerHTML = `${Math.round(response.data.main.temp)}°C`;
   currentCity.innerHTML = `${response.data.name}`;
 }
