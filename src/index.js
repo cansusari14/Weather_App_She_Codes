@@ -33,7 +33,6 @@ var str = "How are you doing today?";
 var res = str.split(" ");
 
 function showTemperature(response) {
-  console.log(response);
   tempDisplay.innerHTML = `${Math.round(response.data.main.temp)}`;
   currentCity.innerHTML = `${response.data.name}`;
   weatherDescription.innerHTML = `${response.data.weather[0].description}`;
