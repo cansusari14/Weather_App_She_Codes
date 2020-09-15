@@ -29,29 +29,28 @@
             class="search-bar"
             type="text"
             placeholder="Enter a city here"
-          /><i class="fas fa-search"></i>
+          /><button id="search-button"><i class="fas fa-search"></i></form></button>
+          <button id="location-button"><i class="fas fa-map-marker-alt"></i></button>
         </form>
-        <button id="location"><i class="fas fa-map-marker-alt"></i></button>
       </div>
       <div class="current-location">
-        <h1>BERLIN</h1>
+        <h1>Berlin</h1>
       </div>
+      <p class="current-date">8 August 2020</p>
       <div class="row">
         <div class="col-8">
-          <p class="current-date">8 August 2020</p>
-          <br />
           <div class="weather-info">
-            <h2 id="temperature">26°C</h2>
-            <p><i class="fas fa-cloud"></i> Partly Cloudy</p>
+            <strong id="temperature">26 </strong><span class="units"
+                    >°C|°F</span>
+            <p class="weather-description"><i class="fas fa-cloud"></i> Partly Cloudy</p>
           </div>
         </div>
-        <div class="weather-details">
-          <div class="col-4">
-            <h6>Wind</h6>
-            <p>5km/h</p>
-            <h6>Humidity</h6>
-            <p>32%</p>
-          </div>
+        <div class="col-4">
+          <ul class="weather-details">
+            <li class="weather-wind">Wind</li>
+            <p id="wind">5km/h</p>
+            <li class="weather-humidity">Humidity</li>
+            <p id="humidity"> 32%</p>
         </div>
       </div>
       <hr />
@@ -79,7 +78,7 @@
         <div class="col forecast">
           <h6>THU</h6>
           <i class="fas fa-sun"></i>
-          <p>21°C</p>
+          <p>21°C </p>
         </div>
       </div>
     </div>
