@@ -19,6 +19,7 @@ let tempDisplay = document.querySelector("#temperature");
 let humidityDisplay = document.querySelector("#humidity");
 let windDisplay = document.querySelector("#wind");
 let iconElement = document.querySelector("#current-icon");
+
 function getWeather(city) {
   let units = "metric";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
@@ -35,6 +36,7 @@ var res = str.split(" ");
 
 function showTemperature(response) {
   tempDisplay.innerHTML = `${Math.round(response.data.main.temp)}`;
+  celciusTemperature = response.data.main.temp;
   currentCity.innerHTML = `${response.data.name}`;
   weatherDescription.innerHTML = `${response.data.weather[0].description}`;
   humidityDisplay.innerHTML = `${response.data.main.humidity}%`;
@@ -53,6 +55,18 @@ function search(event) {
   currentCity.innerHTML = `${city}`;
   getWeather(city);
 }
+
+function displayFahrenheitTemperature(event) {
+  event.preventDefault();
+  let fahrenheitTemperature = (tempDisplay.innerHTML * 9) / 5 + 32;
+  tempDisplay.innerHTML = Math.round(fahrenheitTemperature);
+}
+
+function displayCelciusTemperature(event) {
+  event.preventDefault();
+  tempDisplay.innerHTML = Math.round(celciusTemperature);
+}
+
 let form = document.querySelector(".search");
 form.addEventListener("submit", search);
 
@@ -63,4 +77,11 @@ function handleClick(event) {
   navigator.geolocation.getCurrentPosition(showPosition);
 }
 
+let celciusTemperature = null;
+
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
+
+let celciusLink = document.querySelector("#celcius-link");
+celciusLink.addEventListener("click", displayCelciusTemperature);
 getWeather("istanbul");

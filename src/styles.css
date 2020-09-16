@@ -91,3 +91,9 @@ button {
   max-width: 450px;
   display: block;
 }
+a:hover {
+  text-decoration: none;
+}
+a:focus {
+  color: black;
+}
