@@ -18,6 +18,7 @@ let weatherDescription = document.querySelector(".weather-description");
 let tempDisplay = document.querySelector("#temperature");
 let humidityDisplay = document.querySelector("#humidity");
 let windDisplay = document.querySelector("#wind");
+let iconElement = document.querySelector("#current-icon");
 function getWeather(city) {
   let units = "metric";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
@@ -38,6 +39,11 @@ function showTemperature(response) {
   weatherDescription.innerHTML = `${response.data.weather[0].description}`;
   humidityDisplay.innerHTML = `${response.data.main.humidity}%`;
   windDisplay.innerHTML = `${Math.round(response.data.wind.speed)} km/h`;
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 function search(event) {
   event.preventDefault();
