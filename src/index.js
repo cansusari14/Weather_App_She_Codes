@@ -31,9 +31,9 @@ function displayForecast(response) {
     let forecast = response.data.list[index];
     forecastElement.innerHTML += ` <div class="col forecast">
             <h6>${days[date.getDay(response.data.list[index].dt)]}</h6>
-            <img src="http://openweathermap.org/img/wn/${
+            <img src="assets/${
               forecast.weather[0].icon
-            }@2x.png" class="forecast-images" style="width:60px;height:60px;"/>
+            }.svg" class="forecast-images" style="width:60px;height:60px;"/>
             <p>${Math.round(forecast.main.temp)}°C</p>
           </div>`;
   }
@@ -69,7 +69,7 @@ function showTemperature(response) {
   windDisplay.innerHTML = `${Math.round(response.data.wind.speed)} km/h`;
   iconElement.setAttribute(
     "src",
-    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    `assets/${response.data.weather[0].icon}.svg`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
 }
