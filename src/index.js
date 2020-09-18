@@ -29,8 +29,10 @@ function displayForecast(response) {
 
   for (let index = 0; index < 40; index += 8) {
     let forecast = response.data.list[index];
+    let forecastDay =
+      days[new Date(response.data.list[index].dt * 1000).getDay()];
     forecastElement.innerHTML += ` <div class="col forecast">
-            <h6>${days[date.getDay(response.data.list[index].dt)]}</h6>
+            <h6>${forecastDay}</h6>
             <img src="assets/${
               forecast.weather[0].icon
             }.svg" class="forecast-images" style="width:60px;height:60px;"/>
@@ -57,8 +59,6 @@ function showPosition(position) {
   apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${long}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayForecast);
 }
-var str = "How are you doing today?";
-var res = str.split(" ");
 
 function showTemperature(response) {
   tempDisplay.innerHTML = `${Math.round(response.data.main.temp)}`;
