@@ -54,32 +54,14 @@
         </div>
       </div>
       <hr />
-      <div class="row">
-        <div class="col forecast">
-          <h6>SUN</h6>
-          <i class="fas fa-cloud-sun"></i>
-          <p>21°C</p>
-        </div>
-        <div class="col forecast">
-          <h6>MON</h6>
-          <i class="fas fa-sun"></i>
-          <p>24°C</p>
-        </div>
-        <div class="col forecast">
-          <h6>TUE</h6>
-          <i class="fas fa-cloud-showers-heavy"></i>
-          <p>16°C</p>
-        </div>
-        <div class="col forecast">
-          <h6>WED</h6>
-          <i class="fas fa-cloud-showers-heavy"></i>
-          <p>13°C</p>
-        </div>
-        <div class="col forecast">
-          <h6>THU</h6>
-          <i class="fas fa-sun"></i>
-          <p>21°C </p>
-        </div>
+      <div class="row weather-forecast" id="forecast">
+         <div class="col forecast">
+            <h6>SUN</h6>
+            <img src="http://openweathermap.org/img/wn/${
+              forecast.weather[0].icon
+            }@2x.png" class="forecast-images"/>
+            <p>22°C</p>
+          </div>
       </div>
     </div>
     <small class="link">

@@ -20,16 +20,42 @@ let humidityDisplay = document.querySelector("#humidity");
 let windDisplay = document.querySelector("#wind");
 let iconElement = document.querySelector("#current-icon");
 
+function displayForecast(response) {
+  console.log(response.data.list[0]);
+  console.log(response.data.list);
+  let forecastElement = document.querySelector("#forecast");
+  let forecast = null;
+  forecastElement.innerHTML = "";
+
+  for (let index = 0; index < 40; index += 8) {
+    let forecast = response.data.list[index];
+    forecastElement.innerHTML += ` <div class="col forecast">
+            <h6>${days[date.getDay(response.data.list[index].dt)]}</h6>
+            <img src="http://openweathermap.org/img/wn/${
+              forecast.weather[0].icon
+            }@2x.png" class="forecast-images" style="width:60px;height:60px;"/>
+            <p>${Math.round(forecast.main.temp)}°C</p>
+          </div>`;
+  }
+  console.log(forecast);
+}
 function getWeather(city) {
   let units = "metric";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
+  let apiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
   axios.get(apiUrl).then(showTemperature);
+
+  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=${units}`;
+  axios.get(apiUrl).then(displayForecast);
 }
+
 function showPosition(position) {
   let lat = position.coords.latitude;
   let long = position.coords.longitude;
   let apiURL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${apiKey}&units=metric`;
   axios.get(apiURL).then(showTemperature);
+
+  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${long}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
 }
 var str = "How are you doing today?";
 var res = str.split(" ");

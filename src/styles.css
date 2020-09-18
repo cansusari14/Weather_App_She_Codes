@@ -56,6 +56,12 @@ button {
   float: left;
   height: 60px;
 }
+.forecast {
+  padding: 0px;
+}
+.forecast-images {
+  font-size: small;
+}
 
 .search-bar {
   margin-right: 5px;
