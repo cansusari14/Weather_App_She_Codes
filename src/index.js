@@ -1,5 +1,14 @@
 let date = new Date();
-let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+let days = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
+let daysShort = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 let day = days[date.getDay()];
 let hour = date.getHours();
 if (hour < 10) {
@@ -21,25 +30,27 @@ let windDisplay = document.querySelector("#wind");
 let iconElement = document.querySelector("#current-icon");
 
 function displayForecast(response) {
-  console.log(response.data.list[0]);
   console.log(response.data.list);
   let forecastElement = document.querySelector("#forecast");
   let forecast = null;
   forecastElement.innerHTML = "";
 
-  for (let index = 0; index < 40; index += 8) {
+  for (let index = 0; index < 40; index++) {
+    let currentDay =
+      daysShort[new Date(response.data.list[index].dt * 1000).getDay()];
+    let nextDay =
+      daysShort[new Date(response.data.list[index + 1].dt * 1000).getDay()];
     let forecast = response.data.list[index];
-    let forecastDay = //getting the day for the forecast
-      days[new Date(response.data.list[index].dt * 1000).getDay()];
-    forecastElement.innerHTML += ` <div class="col forecast">
-            <h6>${forecastDay}</h6>
+    if (currentDay !== nextDay) {
+      forecastElement.innerHTML += ` <div class="col forecast">
+            <h6>${nextDay}</h6>
             <img src="assets/${
               forecast.weather[0].icon
             }.svg" class="forecast-images" style="width:60px;height:60px;"/>
             <p>${Math.round(forecast.main.temp)}°C</p>
           </div>`;
+    }
   }
-  console.log(forecast);
 }
 function getWeather(city) {
   let units = "metric";
