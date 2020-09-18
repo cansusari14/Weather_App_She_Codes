@@ -1,5 +1,5 @@
 let date = new Date();
-let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sun", "Sat"];
+let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 let day = days[date.getDay()];
 let hour = date.getHours();
 if (hour < 10) {
@@ -29,7 +29,7 @@ function displayForecast(response) {
 
   for (let index = 0; index < 40; index += 8) {
     let forecast = response.data.list[index];
-    let forecastDay =
+    let forecastDay = //getting the day for the forecast
       days[new Date(response.data.list[index].dt * 1000).getDay()];
     forecastElement.innerHTML += ` <div class="col forecast">
             <h6>${forecastDay}</h6>
@@ -61,8 +61,8 @@ function showPosition(position) {
 }
 
 function showTemperature(response) {
-  tempDisplay.innerHTML = `${Math.round(response.data.main.temp)}`;
   celciusTemperature = response.data.main.temp;
+  tempDisplay.innerHTML = `${Math.round(response.data.main.temp)}`;
   currentCity.innerHTML = `${response.data.name}`;
   weatherDescription.innerHTML = `${response.data.weather[0].description}`;
   humidityDisplay.innerHTML = `${response.data.main.humidity}%`;
@@ -84,11 +84,15 @@ function search(event) {
 
 function displayFahrenheitTemperature(event) {
   event.preventDefault();
-  let fahrenheitTemperature = (tempDisplay.innerHTML * 9) / 5 + 32;
+  celciusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
+  let fahrenheitTemperature = (celciusTemperature * 9) / 5 + 32;
   tempDisplay.innerHTML = Math.round(fahrenheitTemperature);
 }
 
 function displayCelciusTemperature(event) {
+  celciusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
   event.preventDefault();
   tempDisplay.innerHTML = Math.round(celciusTemperature);
 }
@@ -102,7 +106,6 @@ function handleClick(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(showPosition);
 }
-
 let celciusTemperature = null;
 
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
@@ -110,4 +113,5 @@ fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
 
 let celciusLink = document.querySelector("#celcius-link");
 celciusLink.addEventListener("click", displayCelciusTemperature);
+
 getWeather("istanbul");

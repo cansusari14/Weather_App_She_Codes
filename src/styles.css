@@ -47,6 +47,13 @@ button {
   top: -32px;
   letter-spacing: 3px;
 }
+.weather-info .active {
+  color: black;
+  cursor: default;
+}
+.weather-info .active:hover {
+  text-decoration: none;
+}
 .weather-description {
   text-transform: capitalize;
 }
