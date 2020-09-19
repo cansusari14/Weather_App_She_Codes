@@ -50,7 +50,7 @@ function displayForecast(response) {
 
 function getWeather(city) {
   let units = "metric";
-  let apiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
   axios
     .get(apiUrl)
     .then(function (response) {
