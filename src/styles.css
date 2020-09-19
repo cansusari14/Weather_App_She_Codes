@@ -4,7 +4,7 @@ body {
 .container {
   background-color: #3e517a;
   color: white;
-  border: 1px solid black;
+
   border-color: #fdc2b0;
   border-radius: 10px;
   display: block;
@@ -35,6 +35,10 @@ button {
   box-sizing: 30px 30px;
   padding: 0px;
   color: none;
+  border: none;
+}
+button:focus {
+  outline: 0;
 }
 .fa-search {
   color: #fdc2b0;
@@ -87,6 +91,21 @@ a {
 .search-bar {
   margin-right: 5px;
   width: 80%;
+  background-color: #3e517a;
+  border: 2px solid #fdb99d;
+  border-radius: 5px;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  padding: 5px;
+  color: white;
+}
+.search-bar:focus {
+  box-shadow: 0 0 0 0.1rem #fdb99d;
+  border: 1px solid #fdb99d;
+  outline: 0;
+}
+::placeholder {
+  color: white;
+  opacity: 0.5;
 }
 .today {
   display: inline;
