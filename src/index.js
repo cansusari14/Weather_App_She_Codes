@@ -30,7 +30,6 @@ let windDisplay = document.querySelector("#wind");
 let iconElement = document.querySelector("#current-icon");
 
 function displayForecast(response) {
-  console.log(response);
   let forecastElement = document.querySelector("#forecast");
   forecastElement.innerHTML = "";
 
